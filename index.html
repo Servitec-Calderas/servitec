@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servitec Calderas - Service y Mantenimiento</title>
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --card-bg: #161b22;
+      --text-color: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent-color: #238636;
+      --accent-hover: #2ea043;
+      --border-color: #30363d;
+      --whatsapp-color: #25d366;
+      --whatsapp-hover: #22bf5b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .section-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    p, ul {
+      margin-bottom: 15px;
+      color: var(--text-color);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .btn-whatsapp {
+      display: block;
+      width: 100%;
+      background-color: var(--whatsapp-color);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-hover);
+    }
+
+    .image-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <!-- ENCABEZADO -->
+    <header>
+      <h1>Servitec Calderas</h1>
+      <p>Especialistas en Mantenimiento, Service y Reparación</p>
+    </header>
+
+    <!-- SECCIÓN: NOSOTROS / SERVICIOS -->
+    <div class="section-card">
+      <h2>Nuestros Servicios</h2>
+      <p>Brindamos soluciones integrales y service oficial para mantener tu hogar y comercio cálidos y seguros durante todo el año.</p>
+      <ul>
+        <li>Service preventivo y correctivo de calderas murales y de pie.</li>
+        <li>Limpieza de intercambiadores y quemadores.</li>
+        <li>Control de sistemas de seguridad y tiraje.</li>
+        <li>Reparación de placas electrónicas y componentes hidráulicos.</li>
+      </ul>
+    </div>
+
+    <!-- SECCIÓN: LLAMADO A LA ACCIÓN (WHATSAPP) -->
+    <div class="section-card" style="text-align: center;">
+      <h2>¿Necesitás asistencia técnica?</h2>
+      <p>Contactanos de forma directa por WhatsApp para coordinar tu visita.</p>
+      <a href="https://wa.me/549XXXXXXXXXX" class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp</a>
+    </div>
+
+    <!-- SECCIÓN: IMAGEN ESTÁTICA INFERIOR -->
+    <div class="section-card">
+      <h2>Información Visual</h2>
+      <div class="image-container">
+        <!-- Imagen estática corregida en formato JPG -->
+        <img src="./1.jpg" alt="Servitec Calderas - Imagen inferior">
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Servitec Calderas. Todos los derechos reservados.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
