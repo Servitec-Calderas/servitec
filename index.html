@@ -3,18 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servitec Calderas - Service y Mantenimiento</title>
+  <title>Servitec Calderas | Mantenimiento y Reparación</title>
   <style>
     :root {
-      --bg-color: #0d1117;
-      --card-bg: #161b22;
-      --text-color: #c9d1d9;
-      --text-muted: #8b949e;
-      --accent-color: #238636;
-      --accent-hover: #2ea043;
-      --border-color: #30363d;
-      --whatsapp-color: #25d366;
-      --whatsapp-hover: #22bf5b;
+      --primary: #0b2545;
+      --accent: #d9381e;
+      --dark: #131722;
+      --whatsapp: #25d366;
+      --instagram: #e1306c;
     }
 
     * {
@@ -24,157 +20,632 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      background-color: var(--dark);
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    /* Pantalla de Carga / Animación del Logo Grande idéntico al original */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dark);
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeOut 0.8s ease 1.8s forwards;
+    }
+
+    .splash-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #ffffff;
+      padding: 35px 50px;
+      border-radius: 90px;
+      box-shadow: 0 0 50px rgba(217, 56, 30, 0.7);
+      animation: pulseLogo 1s infinite alternate;
+    }
+
+    .bars-container-lg {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 48px;
+    }
+
+    .bar-red-lg {
+      width: 15px;
+      height: 42px;
+      background-color: #d9232a;
+      transform: skewX(-20deg);
+    }
+
+    .bar-orange-lg {
+      width: 15px;
+      height: 42px;
+      background-color: #f7931e;
+      transform: skewX(-20deg);
+      margin-top: 6px;
+    }
+
+    .splash-brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .splash-brand-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1c3d5a;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+
+    .splash-brand-subtitle {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #64748b;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    @keyframes pulseLogo {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; visibility: visible; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    /* Header Navbar */
+    header {
+      background-color: #ffffff;
+      border-bottom: 3px solid var(--accent);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      padding: 6px 14px;
+      border-radius: 24px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .bars-container-sm {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 22px;
+    }
+
+    .bar-red-sm {
+      width: 8px;
+      height: 18px;
+      background-color: #d9232a;
+      transform: skewX(-20deg);
+    }
+
+    .bar-orange-sm {
+      width: 8px;
+      height: 18px;
+      background-color: #f7931e;
+      transform: skewX(-20deg);
+      margin-top: 3px;
+    }
+
+    .brand-text-mini {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      font-size: 0.55rem;
+      color: #64748b;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Carrusel Superior */
+    .hero {
+      position: relative;
+      height: 65vh;
+      min-height: 380px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(11, 37, 69, 0.4) 0%, rgba(19, 23, 34, 0.88) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 5;
+    }
+
+    .hero-title {
+      color: #ffffff;
+      font-size: 1.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      max-width: 750px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .hero-subtitle {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 22px;
+      max-width: 580px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background-color: var(--accent);
+      width: 24px;
+      border-radius: 5px;
+    }
+
+    /* Modal / Cartelito de Quiénes Somos en tono oscuro cómodo (no quema la vista) */
+    #modal-quienes {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
       align-items: center;
       padding: 20px;
     }
 
-    .wrapper {
+    .modal-content {
+      background: #1e293b;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 500px;
       width: 100%;
-      max-width: 800px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .modal-title {
+      font-size: 1.4rem;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .modal-title::after {
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent);
+      display: block;
+      margin: 8px auto 0;
+    }
+
+    .modal-text {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .btn-close-modal {
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    /* Sección Principal con Fondo Fijo de la Imagen 1 restaurada oscura */
+    .services-section {
+      position: relative;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+
+    .collage-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .services-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.88); /* Tono oscuro cómodo para que la foto 1 se vea bien y no encandile */
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
       margin: 0 auto;
     }
 
-    header {
+    .section-title {
       text-align: center;
-      padding: 40px 20px;
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    header h1 {
-      font-size: 2.2rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .section-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    h2 {
       font-size: 1.5rem;
       color: #ffffff;
-      margin-bottom: 15px;
-      border-bottom: 2px solid var(--border-color);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+      display: block;
+      margin: 10px auto 0;
+    }
+
+    /* Cajas de servicios en tono oscuro suave y cómodo */
+    .service-category {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-header {
+      font-size: 1.2rem;
+      color: #ffffff;
+      margin-bottom: 18px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
       padding-bottom: 8px;
     }
 
-    p, ul {
-      margin-bottom: 15px;
-      color: var(--text-color);
+    .btn-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
     }
 
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    .btn-whatsapp {
-      display: block;
-      width: 100%;
-      background-color: var(--whatsapp-color);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      font-size: 1.2rem;
-      font-weight: bold;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-weight: 700;
       text-decoration: none;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-      margin-top: 20px;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-    }
-
-    .btn-whatsapp:hover {
-      background-color: var(--whatsapp-hover);
-    }
-
-    .image-container {
+      font-size: 0.85rem;
+      transition: all 0.25s ease;
       text-align: center;
-      margin-top: 20px;
+      cursor: pointer;
     }
 
-    .image-container img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
+    .btn-contact {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-about {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-ig {
+      background-color: var(--instagram);
+      color: #ffffff;
+    }
+
+    .btn-wa-service {
+      background-color: rgba(37, 211, 102, 0.15);
+      color: #ffffff;
+      border: 1.5px solid var(--whatsapp);
+    }
+
+    .btn-wa-service:hover, .btn-wa-service:active {
+      background-color: var(--whatsapp);
+      color: #ffffff;
     }
 
     footer {
+      background-color: #090d14;
+      color: #64748b;
       text-align: center;
       padding: 20px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      border-top: 1px solid #1e293b;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: 1.3rem; }
+      .hero-subtitle { font-size: 0.9rem; }
+      .btn-group { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="wrapper">
-    
-    <!-- ENCABEZADO -->
-    <header>
-      <h1>Servitec Calderas</h1>
-      <p>Especialistas en Mantenimiento, Service y Reparación</p>
-    </header>
+  <!-- Pantalla de Carga / Animación del Logo Grande -->
+  <div id="splash-screen">
+    <div class="splash-logo-box">
+      <div class="bars-container-lg">
+        <div class="bar-red-lg"></div>
+        <div class="bar-orange-lg"></div>
+      </div>
+      <div class="splash-brand-text">
+        <span class="splash-brand-title">servitec</span>
+        <span class="splash-brand-subtitle">CALDERAS</span>
+      </div>
+    </div>
+  </div>
 
-    <!-- SECCIÓN: NOSOTROS / SERVICIOS -->
-    <div class="section-card">
-      <h2>Nuestros Servicios</h2>
-      <p>Brindamos soluciones integrales y service oficial para mantener tu hogar y comercio cálidos y seguros durante todo el año.</p>
-      <ul>
-        <li>Service preventivo y correctivo de calderas murales y de pie.</li>
-        <li>Limpieza de intercambiadores y quemadores.</li>
-        <li>Control de sistemas de seguridad y tiraje.</li>
-        <li>Reparación de placas electrónicas y componentes hidráulicos.</li>
-      </ul>
+  <!-- Modal / Cartelito de Quiénes Somos -->
+  <div id="modal-quienes">
+    <div class="modal-content">
+      <h2 class="modal-title">¿Quiénes Somos?</h2>
+      <p class="modal-text">
+        Somos especialistas en climatización con amplia trayectoria en Neuquén Capital y zona de influencia. Nos enfocamos exclusivamente en brindar un servicio técnico de excelencia, garantizando el diagnóstico preciso, mantenimiento preventivo y reparación eficiente para asegurar el confort y la seguridad de tu hogar o comercio.
+      </p>
+      <button class="btn-close-modal" onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Header Navbar con Logo exacto -->
+  <header>
+    <div class="brand-container">
+      <div class="header-logo-box">
+        <div class="bars-container-sm">
+          <div class="bar-red-sm"></div>
+          <div class="bar-orange-sm"></div>
+        </div>
+      </div>
+      <div class="brand-text-mini">
+        <span class="brand-title">SERVITEC</span>
+        <span class="brand-subtitle">Calderas</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Carrusel Superior (Fotos 2 a 9) -->
+  <section class="hero">
+    <div class="carousel-slide active">
+      <img src="./2.jpg" alt="Servitec 1">
+    </div>
+    <div class="carousel-slide">
+      <img src="./3.jpg" alt="Servitec 2">
+    </div>
+    <div class="carousel-slide">
+      <img src="./4.jpg" alt="Servitec 3">
+    </div>
+    <div class="carousel-slide">
+      <img src="./5.jpg" alt="Servitec 4">
+    </div>
+    <div class="carousel-slide">
+      <img src="./6.jpg" alt="Servitec 5">
+    </div>
+    <div class="carousel-slide">
+      <img src="./7.jpg" alt="Servitec 6">
+    </div>
+    <div class="carousel-slide">
+      <img src="./8.jpg" alt="Servitec 7">
+    </div>
+    <div class="carousel-slide">
+      <img src="./9.jpg" alt="Servitec 8">
     </div>
 
-    <!-- SECCIÓN: LLAMADO A LA ACCIÓN (WHATSAPP) -->
-    <div class="section-card" style="text-align: center;">
-      <h2>¿Necesitás asistencia técnica?</h2>
-      <p>Contactanos de forma directa por WhatsApp para coordinar tu visita.</p>
-      <a href="https://wa.me/549XXXXXXXXXX" class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp</a>
-    </div>
-
-    <!-- SECCIÓN: IMAGEN ESTÁTICA INFERIOR -->
-    <div class="section-card">
-      <h2>Información Visual</h2>
-      <div class="image-container">
-        <!-- Imagen estática corregida en formato JPG -->
-        <img src="./1.jpg" alt="Servitec Calderas - Imagen inferior">
+    <div class="hero-overlay">
+      <h1 class="hero-title">Mantenimiento y Reparación Especializada</h1>
+      <p class="hero-subtitle">Servicio técnico profesional para calderas y aires acondicionados en Neuquén.</p>
+      
+      <div class="hero-btns">
+        <a href="#servicios" class="btn btn-contact">Solicitar Servicio ↓</a>
+        <button class="btn btn-about" onclick="abrirModal()">Quiénes Somos</button>
+        <a href="https://www.instagram.com/servitec.calderas" class="btn btn-ig" target="_blank">Instagram</a>
       </div>
     </div>
 
-    <footer>
-      <p>&copy; 2026 Servitec Calderas. Todos los derechos reservados.</p>
-    </footer>
+    <div class="carousel-indicators">
+      <div class="dot active" onclick="setSlide(0)"></div>
+      <div class="dot" onclick="setSlide(1)"></div>
+      <div class="dot" onclick="setSlide(2)"></div>
+      <div class="dot" onclick="setSlide(3)"></div>
+      <div class="dot" onclick="setSlide(4)"></div>
+      <div class="dot" onclick="setSlide(5)"></div>
+      <div class="dot" onclick="setSlide(6)"></div>
+      <div class="dot" onclick="setSlide(7)"></div>
+    </div>
+  </section>
 
-  </div>
+  <!-- Sección de Servicios con Fondo Fijo de la Imagen 1 -->
+  <section id="servicios" class="services-section">
+    <img src="./1.jpg" alt="Fondo Servitec" class="collage-bg">
+    <div class="services-overlay"></div>
+
+    <div class="container">
+      <h2 class="section-title">Servicios de Mantenimiento y Reparación</h2>
+
+      <!-- Calderas -->
+      <div class="service-category">
+        <h3 class="category-header">Calderas</h3>
+        <div class="btn-group">
+          <a href="https://wa.me/5492994704203?text=Hola%20Servitec,%20necesito%20consultar%20por%20mantenimiento%20de%20calderas" class="btn btn-wa-service" target="_blank">
+            Mantenimiento de Calderas
+          </a>
+          <a href="https://wa.me/5492994704203?text=Hola%20Servitec,%20necesito%20consultar%20por%20reparación%20de%20calderas" class="btn btn-wa-service" target="_blank">
+            Reparación de Calderas
+          </a>
+        </div>
+      </div>
+
+      <!-- Aires Acondicionados -->
+      <div class="service-category">
+        <h3 class="category-header">Aires Acondicionados</h3>
+        <div class="btn-group">
+          <a href="https://wa.me/5492994704203?text=Hola%20Servitec,%20necesito%20consultar%20por%20mantenimiento%20de%20aire%20acondicionado" class="btn btn-wa-service" target="_blank">
+            Mantenimiento de Aires Acondicionados
+          </a>
+          <a href="https://wa.me/5492994704203?text=Hola%20Servitec,%20necesito%20consultar%20por%20reparación%20de%20aire%20acondicionado" class="btn btn-wa-service" target="_blank">
+            Reparación de Aires Acondicionados
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; Servitec Calderas - Neuquén Capital y Zonas de Cobertura.</p>
+  </footer>
+
+  <script>
+    // Control del Modal (Cartelito Quiénes Somos)
+    function abrirModal() {
+      document.getElementById('modal-quienes').style.display = 'flex';
+    }
+    function cerrarModal() {
+      document.getElementById('modal-quienes').style.display = 'none';
+    }
+
+    // Control del Carrusel
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        dots[i].classList.remove('active');
+      });
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function setSlide(index) {
+      currentSlide = index;
+      showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 4500);
+  </script>
 
 </body>
 </html>
