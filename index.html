@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M9JXBH8D');</script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servitec Calderas | Mantenimiento y Reparación</title>
@@ -30,7 +38,7 @@
       line-height: 1.5;
     }
 
-    /* Pantalla de Carga / Animación del Logo Grande idéntico al original */
+    /* Pantalla de Carga / Animación del Logo Grande */
     #splash-screen {
       position: fixed;
       top: 0;
@@ -278,7 +286,7 @@
       border-radius: 5px;
     }
 
-    /* Modal / Cartelito de Quiénes Somos en tono oscuro cómodo (no quema la vista) */
+    /* Modal / Cartelito de Quiénes Somos */
     #modal-quienes {
       display: none;
       position: fixed;
@@ -340,7 +348,7 @@
       font-size: 0.9rem;
     }
 
-    /* Sección Principal con Fondo Fijo de la Imagen 1 restaurada oscura */
+    /* Sección Principal */
     .services-section {
       position: relative;
       padding: 60px 20px;
@@ -363,7 +371,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(15, 23, 42, 0.88); /* Tono oscuro cómodo para que la foto 1 se vea bien y no encandile */
+      background-color: rgba(15, 23, 42, 0.88); 
       z-index: 1;
     }
 
@@ -393,7 +401,7 @@
       margin: 10px auto 0;
     }
 
-    /* Cajas de servicios en tono oscuro suave y cómodo */
+    /* Cajas de servicios */
     .service-category {
       background: #1e293b;
       border: 1px solid rgba(255, 255, 255, 0.15);
@@ -479,6 +487,11 @@
 </head>
 <body>
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9JXBH8D"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <!-- Pantalla de Carga / Animación del Logo Grande -->
   <div id="splash-screen">
     <div class="splash-logo-box">
@@ -504,7 +517,7 @@
     </div>
   </div>
 
-  <!-- Header Navbar con Logo exacto -->
+  <!-- Header Navbar -->
   <header>
     <div class="brand-container">
       <div class="header-logo-box">
@@ -520,7 +533,7 @@
     </div>
   </header>
 
-  <!-- Carrusel Superior (Fotos 2 a 9) -->
+  <!-- Carrusel Superior -->
   <section class="hero">
     <div class="carousel-slide active">
       <img src="./2.jpg" alt="Servitec 1">
@@ -570,7 +583,7 @@
     </div>
   </section>
 
-  <!-- Sección de Servicios con Fondo Fijo de la Imagen 1 -->
+  <!-- Sección de Servicios -->
   <section id="servicios" class="services-section">
     <img src="./1.jpg" alt="Fondo Servitec" class="collage-bg">
     <div class="services-overlay"></div>
@@ -612,7 +625,7 @@
   </footer>
 
   <script>
-    // Control del Modal (Cartelito Quiénes Somos)
+    // Control del Modal
     function abrirModal() {
       document.getElementById('modal-quienes').style.display = 'flex';
     }
